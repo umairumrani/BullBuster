@@ -50,7 +50,7 @@ export default function HeroSection() {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="text-6xl md:text-8xl font-black mb-6"
         >
-          <span className="text-brand-yellow">BULL</span>BSUTER
+          <span className="text-brand-yellow">BULL</span>BUSTER
         </motion.h1>
         
         <motion.p

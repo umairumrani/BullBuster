@@ -50,7 +50,7 @@ export default function OrderTrackingSection() {
   };
 
   return (
-    <section id="track" ref={ref} className="py-20 bg-gray-50">
+    <section id="track" ref={ref} className="py-20 bg-brand-dark-gray">
       <div className="max-w-7xl mx-auto px-6">
         <motion.div
           initial={{ y: 50, opacity: 0 }}
@@ -59,8 +59,8 @@ export default function OrderTrackingSection() {
           className="text-center mb-16"
         >
           <span className="text-brand-yellow font-semibold text-lg uppercase tracking-wider">Track Your Order</span>
-          <h2 className="text-5xl font-black text-brand-black mt-4 mb-6">Real-Time Updates</h2>
-          <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+          <h2 className="text-5xl font-black text-white mt-4 mb-6">Real-Time Updates</h2>
+          <p className="text-gray-300 text-lg max-w-2xl mx-auto">
             Stay informed with live tracking and precise delivery estimates.
           </p>
         </motion.div>
@@ -71,7 +71,7 @@ export default function OrderTrackingSection() {
             initial={{ y: 30, opacity: 0 }}
             animate={isInView ? { y: 0, opacity: 1 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="bg-white rounded-2xl p-8 shadow-lg mb-12"
+            className="bg-black/40 backdrop-blur-sm border border-brand-yellow/20 rounded-2xl p-8 shadow-lg mb-12"
           >
             <div className="flex flex-col md:flex-row gap-4">
               <input
@@ -79,7 +79,7 @@ export default function OrderTrackingSection() {
                 placeholder="Enter your order ID (e.g., BB123456789)"
                 value={orderNumber}
                 onChange={(e) => setOrderNumber(e.target.value)}
-                className="flex-1 px-6 py-4 border border-gray-300 rounded-full focus:border-brand-yellow focus:outline-none transition-colors duration-300"
+                className="flex-1 px-6 py-4 border border-brand-yellow/30 bg-black/20 text-white placeholder-gray-400 rounded-full focus:border-brand-yellow focus:outline-none transition-colors duration-300"
                 onKeyPress={(e) => e.key === 'Enter' && handleSearch()}
               />
               <motion.button
@@ -100,12 +100,12 @@ export default function OrderTrackingSection() {
             <motion.div
               initial={{ y: 30, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
-              className="bg-white rounded-2xl p-8 shadow-lg text-center"
+              className="bg-black/40 backdrop-blur-sm border border-brand-yellow/20 rounded-2xl p-8 shadow-lg text-center"
             >
               <div className="text-red-500 mb-4">
                 <Search className="w-12 h-12 mx-auto mb-2" />
-                <h3 className="text-xl font-bold">Order Not Found</h3>
-                <p className="text-gray-600 mt-2">Please check your order number and try again.</p>
+                <h3 className="text-xl font-bold text-white">Order Not Found</h3>
+                <p className="text-gray-300 mt-2">Please check your order number and try again.</p>
               </div>
             </motion.div>
           )}
@@ -115,13 +115,13 @@ export default function OrderTrackingSection() {
               initial={{ y: 30, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.6 }}
-              className="bg-white rounded-2xl p-8 shadow-lg"
+              className="bg-black/40 backdrop-blur-sm border border-brand-yellow/20 rounded-2xl p-8 shadow-lg"
             >
               <div className="mb-8">
-                <h3 className="text-2xl font-black text-brand-black mb-2">Order #{order.orderNumber}</h3>
-                <p className="text-gray-600">Customer: {order.customerName}</p>
-                <p className="text-gray-600">Total: Rs. {(order.total / 100).toFixed(0)}</p>
-                <p className="text-gray-600">Estimated delivery: 25-30 minutes</p>
+                <h3 className="text-2xl font-black text-white mb-2">Order #{order.orderNumber}</h3>
+                <p className="text-gray-300">Customer: {order.customerName}</p>
+                <p className="text-gray-300">Total: Rs. {(order.total / 100).toFixed(0)}</p>
+                <p className="text-gray-300">Estimated delivery: 25-30 minutes</p>
               </div>
               
               <div className="space-y-6">
@@ -145,14 +145,14 @@ export default function OrderTrackingSection() {
                         <IconComponent className="w-6 h-6" />
                       </div>
                       <div className="flex-1">
-                        <h4 className={`font-semibold ${status === 'pending' ? 'text-gray-400' : 'text-brand-black'}`}>
+                        <h4 className={`font-semibold ${status === 'pending' ? 'text-gray-500' : 'text-white'}`}>
                           {step.label}
                         </h4>
-                        <p className={`text-sm ${status === 'pending' ? 'text-gray-400' : 'text-gray-600'}`}>
+                        <p className={`text-sm ${status === 'pending' ? 'text-gray-500' : 'text-gray-300'}`}>
                           {step.description}
                         </p>
                         {status !== 'pending' && (
-                          <span className="text-xs text-gray-500">
+                          <span className="text-xs text-gray-400">
                             {status === 'active' ? 'In Progress' : formatTime(order.updatedAt)}
                           </span>
                         )}

@@ -35,7 +35,7 @@ export default function GallerySection() {
   const isInView = useInView(ref, { once: true, amount: 0.2 });
 
   return (
-    <section id="gallery" ref={ref} className="py-20 bg-white">
+    <section id="gallery" ref={ref} className="py-20 bg-brand-black">
       <div className="max-w-7xl mx-auto px-6">
         <motion.div
           initial={{ y: 50, opacity: 0 }}
@@ -44,8 +44,8 @@ export default function GallerySection() {
           className="text-center mb-16"
         >
           <span className="text-brand-yellow font-semibold text-lg uppercase tracking-wider">Gallery</span>
-          <h2 className="text-5xl font-black text-brand-black mt-4 mb-6">Visual Feast</h2>
-          <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+          <h2 className="text-5xl font-black text-white mt-4 mb-6">Visual Feast</h2>
+          <p className="text-gray-300 text-lg max-w-2xl mx-auto">
             Every dish is a masterpiece, every moment is memorable.
           </p>
         </motion.div>

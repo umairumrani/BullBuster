@@ -129,7 +129,7 @@ export class MemStorage implements IStorage {
 
   async createMenuItem(insertItem: InsertMenuItem): Promise<MenuItem> {
     const id = this.currentMenuItemId++;
-    const item: MenuItem = { ...insertItem, id };
+    const item: MenuItem = { ...insertItem, id, available: insertItem.available ?? true };
     this.menuItems.set(id, item);
     return item;
   }
@@ -145,6 +145,7 @@ export class MemStorage implements IStorage {
       ...insertOrder,
       id: Date.now(),
       orderNumber,
+      status: insertOrder.status ?? "confirmed",
       createdAt: now,
       updatedAt: now,
     };

@@ -1,4 +1,4 @@
-# Restaurant Management System (BullBsuter)
+# Restaurant Management System (BullBuster)
 
 ## Overview
 
@@ -7,6 +7,17 @@ This is a modern full-stack restaurant application built with Express.js, React,
 ## User Preferences
 
 Preferred communication style: Simple, everyday language.
+Design preferences: Black and yellow color scheme, modern glassmorphism effects, professional appearance.
+
+## Recent Changes (January 2025)
+
+- Updated color scheme to black and yellow theme throughout the application
+- Corrected "BullBsuter" to "BullBuster" spelling across all components
+- Integrated custom BullBuster logo in navigation
+- Added glassmorphism effects to navigation bar for modern appearance
+- Updated all sections (About, Menu, Gallery, Order Tracking) to use dark theme
+- Fixed LSP errors in storage.ts for proper type handling
+- Enhanced visual consistency with yellow accents on black backgrounds
 
 ## System Architecture
 

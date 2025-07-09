@@ -8,7 +8,7 @@ export default function AboutSection() {
   const isInView = useInView(ref, { once: true, amount: 0.3 });
 
   return (
-    <section id="about" ref={ref} className="py-20 bg-white relative overflow-hidden">
+    <section id="about" ref={ref} className="py-20 bg-brand-black relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <motion.div
@@ -17,11 +17,11 @@ export default function AboutSection() {
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
             <span className="text-brand-yellow font-semibold text-lg uppercase tracking-wider">Our Story</span>
-            <h2 className="text-5xl font-black text-brand-black mt-4 mb-6">
+            <h2 className="text-5xl font-black text-white mt-4 mb-6">
               Crafting Perfection Since Day One
             </h2>
-            <p className="text-gray-600 text-lg leading-relaxed mb-8">
-              Born in the heart of Lahore, BullBsuter represents a revolution in fast food excellence. We combine traditional Pakistani hospitality with international culinary standards to create an unforgettable dining experience.
+            <p className="text-gray-300 text-lg leading-relaxed mb-8">
+              Born in the heart of Lahore, BullBuster represents a revolution in fast food excellence. We combine traditional Pakistani hospitality with international culinary standards to create an unforgettable dining experience.
             </p>
             
             <div className="grid grid-cols-2 gap-8 mb-8">
@@ -32,7 +32,7 @@ export default function AboutSection() {
                 className="text-center"
               >
                 <div className="text-3xl font-black text-brand-yellow mb-2">50K+</div>
-                <div className="text-gray-600 font-medium">Happy Customers</div>
+                <div className="text-gray-300 font-medium">Happy Customers</div>
               </motion.div>
               <motion.div
                 initial={{ scale: 0.8, opacity: 0 }}
@@ -41,14 +41,14 @@ export default function AboutSection() {
                 className="text-center"
               >
                 <div className="text-3xl font-black text-brand-yellow mb-2">24/7</div>
-                <div className="text-gray-600 font-medium">Service Available</div>
+                <div className="text-gray-300 font-medium">Service Available</div>
               </motion.div>
             </div>
             
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="bg-brand-black text-white px-8 py-4 rounded-full font-semibold hover:bg-brand-black-soft transition-all duration-300"
+              className="bg-brand-yellow text-brand-black px-8 py-4 rounded-full font-semibold hover:bg-brand-yellow-light transition-all duration-300"
             >
               Learn More About Us
             </motion.button>

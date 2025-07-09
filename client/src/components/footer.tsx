@@ -32,7 +32,7 @@ export default function Footer() {
           >
             <div className="flex items-center space-x-2 mb-6">
               <Sandwich className="text-3xl text-brand-yellow" />
-              <span className="text-2xl font-black text-white">BullBsuter</span>
+              <span className="text-2xl font-black text-white">BullBuster</span>
             </div>
             <p className="text-gray-400 mb-6">
               Premium fast food experience in the heart of Lahore, serving quality meals with passion and excellence.
