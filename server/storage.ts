@@ -1,4 +1,7 @@
 import { users, menuItems, orders, contacts, type User, type InsertUser, type MenuItem, type InsertMenuItem, type Order, type InsertOrder, type Contact, type InsertContact } from "@shared/schema";
+import { drizzle } from "drizzle-orm/neon-http";
+import { neon } from "@neondatabase/serverless";
+import { eq } from "drizzle-orm";
 
 export interface IStorage {
   getUser(id: number): Promise<User | undefined>;
@@ -175,4 +178,79 @@ export class MemStorage implements IStorage {
   }
 }
 
-export const storage = new MemStorage();
+// Database storage implementation
+export class DatabaseStorage implements IStorage {
+  private db: ReturnType<typeof drizzle>;
+
+  constructor() {
+    if (!process.env.DATABASE_URL) {
+      throw new Error("DATABASE_URL environment variable is required");
+    }
+
+    const sql = neon(process.env.DATABASE_URL);
+    this.db = drizzle(sql);
+  }
+
+  async getUser(id: number): Promise<User | undefined> {
+    const result = await this.db.select().from(users).where(eq(users.id, id)).limit(1);
+    return result[0];
+  }
+
+  async getUserByUsername(username: string): Promise<User | undefined> {
+    const result = await this.db.select().from(users).where(eq(users.username, username)).limit(1);
+    return result[0];
+  }
+
+  async createUser(insertUser: InsertUser): Promise<User> {
+    const result = await this.db.insert(users).values(insertUser).returning();
+    return result[0];
+  }
+
+  async getMenuItems(): Promise<MenuItem[]> {
+    return await this.db.select().from(menuItems);
+  }
+
+  async getMenuItemsByCategory(category: string): Promise<MenuItem[]> {
+    return await this.db.select().from(menuItems).where(eq(menuItems.category, category));
+  }
+
+  async createMenuItem(insertItem: InsertMenuItem): Promise<MenuItem> {
+    const result = await this.db.insert(menuItems).values(insertItem).returning();
+    return result[0];
+  }
+
+  async getOrder(orderNumber: string): Promise<Order | undefined> {
+    const result = await this.db.select().from(orders).where(eq(orders.orderNumber, orderNumber)).limit(1);
+    return result[0];
+  }
+
+  async createOrder(insertOrder: InsertOrder): Promise<Order> {
+    const orderNumber = `BB${Math.random().toString(36).substr(2, 9).toUpperCase()}`;
+    const orderData = {
+      ...insertOrder,
+      orderNumber,
+      status: insertOrder.status ?? "confirmed",
+    };
+    const result = await this.db.insert(orders).values(orderData).returning();
+    return result[0];
+  }
+
+  async updateOrderStatus(orderNumber: string, status: string): Promise<Order | undefined> {
+    const result = await this.db
+      .update(orders)
+      .set({ status, updatedAt: new Date() })
+      .where(eq(orders.orderNumber, orderNumber))
+      .returning();
+    return result[0];
+  }
+
+  async createContact(insertContact: InsertContact): Promise<Contact> {
+    const result = await this.db.insert(contacts).values(insertContact).returning();
+    return result[0];
+  }
+}
+
+// Use database storage in production, memory storage in development
+export const storage = process.env.NODE_ENV === "production"
+  ? new DatabaseStorage()
+  : new MemStorage();

@@ -24,12 +24,19 @@
   --ring: hsl(51, 100%, 50%);
   --radius: 0.5rem;
   
-  /* Brand Colors */
-  --brand-yellow: hsl(51, 100%, 50%);
-  --brand-yellow-light: hsl(60, 100%, 61%);
+  /* Enhanced Brand Colors */
+  --brand-yellow: hsl(45, 100%, 55%);
+  --brand-yellow-light: hsl(48, 100%, 65%);
+  --brand-yellow-dark: hsl(42, 100%, 45%);
+  --brand-yellow-glow: hsl(45, 100%, 55%, 0.3);
   --brand-black: hsl(0, 0%, 0%);
-  --brand-black-soft: hsl(0, 0%, 11%);
-  --brand-dark-gray: hsl(0, 0%, 8%);
+  --brand-black-soft: hsl(0, 0%, 8%);
+  --brand-black-lighter: hsl(0, 0%, 12%);
+  --brand-dark-gray: hsl(0, 0%, 3%);
+  --brand-gray: hsl(0, 0%, 8%);
+  --brand-gray-light: hsl(0, 0%, 12%);
+  --brand-accent: hsl(30, 100%, 60%);
+  --brand-accent-dark: hsl(25, 100%, 50%);
 }
 
 .dark {
@@ -110,43 +117,75 @@
 }
 
 .hero-overlay {
-  background: linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(255,215,0,0.1) 100%);
+  background: linear-gradient(135deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.6) 50%, rgba(255,193,7,0.15) 100%);
 }
 
 .glass-effect {
-  backdrop-filter: blur(10px);
-  background: rgba(0, 0, 0, 0.3);
-  border: 1px solid rgba(255, 215, 0, 0.2);
+  backdrop-filter: blur(16px);
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 193, 7, 0.3);
+  box-shadow: 0 8px 32px rgba(255, 193, 7, 0.1);
 }
 
 .glass-navbar {
-  backdrop-filter: blur(20px);
-  background: rgba(0, 0, 0, 0.8);
-  border-bottom: 1px solid rgba(255, 215, 0, 0.1);
+  backdrop-filter: blur(24px);
+  background: rgba(0, 0, 0, 0.9);
+  border-bottom: 1px solid rgba(255, 193, 7, 0.2);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
-.brand-yellow {
-  color: hsl(51, 100%, 50%);
+.gradient-text {
+  background: linear-gradient(135deg, hsl(45, 100%, 55%) 0%, hsl(48, 100%, 65%) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
-.brand-yellow-light {
-  color: hsl(60, 100%, 61%);
+.glow-effect {
+  box-shadow: 0 0 20px rgba(255, 193, 7, 0.3), 0 0 40px rgba(255, 193, 7, 0.1);
 }
 
-.brand-black {
+.hover-glow:hover {
+  box-shadow: 0 0 30px rgba(255, 193, 7, 0.4), 0 0 60px rgba(255, 193, 7, 0.2);
+  transform: translateY(-2px);
+}
+
+/* Text Colors */
+.text-brand-yellow {
+  color: hsl(45, 100%, 55%);
+}
+
+.text-brand-yellow-light {
+  color: hsl(48, 100%, 65%);
+}
+
+.text-brand-yellow-dark {
+  color: hsl(42, 100%, 45%);
+}
+
+.text-brand-black {
   color: hsl(0, 0%, 0%);
 }
 
-.brand-black-soft {
-  color: hsl(0, 0%, 11%);
+.text-brand-black-soft {
+  color: hsl(0, 0%, 8%);
 }
 
+.text-brand-gray {
+  color: hsl(0, 0%, 70%);
+}
+
+/* Background Colors */
 .bg-brand-yellow {
-  background-color: hsl(51, 100%, 50%);
+  background-color: hsl(45, 100%, 55%);
 }
 
 .bg-brand-yellow-light {
-  background-color: hsl(60, 100%, 61%);
+  background-color: hsl(48, 100%, 65%);
+}
+
+.bg-brand-yellow-dark {
+  background-color: hsl(42, 100%, 45%);
 }
 
 .bg-brand-black {
@@ -154,9 +193,43 @@
 }
 
 .bg-brand-black-soft {
-  background-color: hsl(0, 0%, 11%);
+  background-color: hsl(0, 0%, 8%);
+}
+
+.bg-brand-black-lighter {
+  background-color: hsl(0, 0%, 12%);
 }
 
 .bg-brand-dark-gray {
-  background-color: hsl(0, 0%, 8%);
+  background-color: hsl(0, 0%, 6%);
+}
+
+.bg-brand-gray {
+  background-color: hsl(0, 0%, 15%);
+}
+
+.bg-brand-gray-light {
+  background-color: hsl(0, 0%, 25%);
+}
+
+/* Border Colors */
+.border-brand-yellow {
+  border-color: hsl(45, 100%, 55%);
+}
+
+.border-brand-yellow-light {
+  border-color: hsl(48, 100%, 65%);
+}
+
+/* Modern Button Styles */
+.btn-primary {
+  @apply bg-brand-yellow text-brand-black font-bold py-3 px-6 rounded-xl transition-all duration-300 hover:bg-brand-yellow-light hover:shadow-lg hover:scale-105 active:scale-95;
+}
+
+.btn-secondary {
+  @apply border-2 border-brand-yellow text-brand-yellow font-bold py-3 px-6 rounded-xl transition-all duration-300 hover:bg-brand-yellow hover:text-brand-black hover:shadow-lg hover:scale-105 active:scale-95;
+}
+
+.btn-ghost {
+  @apply text-white font-medium py-2 px-4 rounded-lg transition-all duration-300 hover:bg-white/10 hover:text-brand-yellow;
 }

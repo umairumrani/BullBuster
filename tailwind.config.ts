@@ -61,6 +61,27 @@ export default {
           border: "var(--sidebar-border)",
           ring: "var(--sidebar-ring)",
         },
+        brand: {
+          yellow: {
+            DEFAULT: "var(--brand-yellow)",
+            light: "var(--brand-yellow-light)",
+            dark: "var(--brand-yellow-dark)",
+          },
+          black: {
+            DEFAULT: "var(--brand-black)",
+            soft: "var(--brand-black-soft)",
+            lighter: "var(--brand-black-lighter)",
+          },
+          gray: {
+            DEFAULT: "var(--brand-gray)",
+            light: "var(--brand-gray-light)",
+            dark: "var(--brand-dark-gray)",
+          },
+          accent: {
+            DEFAULT: "var(--brand-accent)",
+            dark: "var(--brand-accent-dark)",
+          },
+        },
       },
       keyframes: {
         "accordion-down": {
