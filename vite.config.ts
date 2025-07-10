@@ -28,7 +28,9 @@ export default defineConfig({
         },
       },
     },
+    copyPublicDir: true,
   },
+  publicDir: path.resolve(__dirname, "client/public"),
   server: {
     fs: {
       strict: true,
